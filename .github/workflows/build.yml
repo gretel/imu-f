@@ -1,0 +1,14 @@
+name: Build IMU-F
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: arm-none-eabi-gcc
+    - uses: fiam/arm-none-eabi-gcc@v1
+      with:
+        release: '9-2019-q4' # The arm-none-eabi-gcc release to use.
+    - uses: actions/setup-python@v1
+    - run: |
+        ./make.py -T=F3
